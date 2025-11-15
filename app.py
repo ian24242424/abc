@@ -21,14 +21,18 @@ while True:
     for i, element in enumerate(choices):
         print(f"{i+1}. {element}")
     
-    try:
-        choice = int(input("번호 입력 (1~4): "))
-        if choice < 1 or choice > 4:
-            raise ValueError
-        selected = choices[choice - 1]
-    except ValueError:
-        print("❌ 잘못된 입력입니다. 1~4 사이의 숫자를 입력해주세요.\n")
+    user_input = input("번호 입력 (1~4): ").strip()
+    
+    if not user_input.isdigit():
+        print("❌ 잘못된 입력입니다. 숫자를 입력해주세요.\n")
         continue
+
+    choice = int(user_input)
+    if choice < 1 or choice > 4:
+        print("❌ 숫자는 1부터 4 사이여야 합니다.\n")
+        continue
+
+    selected = choices[choice - 1]
 
     if selected in safe_elements:
         score += 1
