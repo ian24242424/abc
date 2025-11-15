@@ -17,15 +17,17 @@ print("안전한 원소만 선택하세요. 위험한 원소를 고르면 게임
 score = 0
 while True:
     choices = random.sample(all_elements, 4)
-    print(f"다음 중 하나를 선택하세요:")
+    print("다음 중 하나를 선택하세요:")
     for i, element in enumerate(choices):
         print(f"{i+1}. {element}")
     
     try:
         choice = int(input("번호 입력 (1~4): "))
+        if choice < 1 or choice > 4:
+            raise ValueError
         selected = choices[choice - 1]
-    except:
-        print("❌ 잘못된 입력입니다. 숫자를 입력해주세요.\n")
+    except ValueError:
+        print("❌ 잘못된 입력입니다. 1~4 사이의 숫자를 입력해주세요.\n")
         continue
 
     if selected in safe_elements:
