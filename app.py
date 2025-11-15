@@ -46,4 +46,5 @@ def main():
         st.write("2. '화학의 기초' - 유튜브 동영상")
 
 if name == "main":
+
     main()
